@@ -2,15 +2,15 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /build
 
-# Copy solution file and all projects
+# Copy solution and restore as distinct layers for better caching
 COPY ProjectManager.sln ./
-COPY src/API/*.csproj ./src/API/
-COPY src/Application/*.csproj ./src/Application/
-COPY src/Domain/*.csproj ./src/Domain/
-COPY src/Infrastructure/*.csproj ./src/Infrastructure/
+COPY src/API/API.csproj ./src/API/
+COPY src/Application/Application.csproj ./src/Application/
+COPY src/Domain/Domain.csproj ./src/Domain/
+COPY src/Infrastructure/Infrastructure.csproj ./src/Infrastructure/
 
 # Restore dependencies
-RUN dotnet restore ProjectManager.sln
+RUN dotnet restore
 
 # Copy all source code
 COPY src/ ./src/
