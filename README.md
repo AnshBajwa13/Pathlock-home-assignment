@@ -488,7 +488,7 @@ VITE_API_BASE_URL=http://localhost:5000/api
 - **Platform:** Vercel + Railway
 - **Status:** ✅ Live & Running
 
-### Assignment 2+3+4 (Full Project Manager)
+### Assignment 2+3 (Full Project Manager)
 - **Frontend:** https://pathlock-project-manager.vercel.app
 - **Backend API:** https://pathlock-home-assignment-production-344b.up.railway.app/
 - **Platform:** Vercel + Railway
