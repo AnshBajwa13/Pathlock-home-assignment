@@ -54,19 +54,26 @@ export function Register() {
       login(user, response.accessToken, response.refreshToken);
       navigate('/dashboard');
     } catch (err: any) {
-      console.error('Registration failed');
+      console.error('Registration failed:', err);
       
-      // Handle validation errors from backend
-      if (err.response?.data?.errors) {
+      // Handle different error types
+      if (err.response?.status === 404) {
+        setError('Unable to connect to server. Please check the API URL configuration.');
+      } else if (err.response?.data?.errors) {
+        // Handle validation errors from backend
         const validationErrors = err.response.data.errors;
         const errorMessages = Object.values(validationErrors).flat().join('. ');
         setError(errorMessages);
       } else if (err.response?.data?.message) {
         setError(err.response.data.message);
+      } else if (err.response?.data?.title) {
+        setError(err.response.data.title);
+      } else if (err.message === 'Network Error') {
+        setError('Network error. Please check your internet connection.');
       } else if (err.message) {
         setError(err.message);
       } else {
-        setError('Registration failed. Please check your connection and try again.');
+        setError('Registration failed. Please try again later.');
       }
     } finally {
       setIsLoading(false);

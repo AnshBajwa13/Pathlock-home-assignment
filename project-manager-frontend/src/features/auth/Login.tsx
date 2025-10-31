@@ -42,14 +42,23 @@ export function Login() {
       login(user, response.accessToken, response.refreshToken);
       navigate('/dashboard');
     } catch (err: any) {
-      console.error('Login failed');
+      console.error('Login failed:', err);
       
-      if (err.response?.data?.message) {
+      // Handle different error types
+      if (err.response?.status === 404) {
+        setError('Unable to connect to server. Please check the API URL configuration.');
+      } else if (err.response?.status === 401) {
+        setError('Invalid email or password. Please try again.');
+      } else if (err.response?.data?.message) {
         setError(err.response.data.message);
+      } else if (err.response?.data?.title) {
+        setError(err.response.data.title);
+      } else if (err.message === 'Network Error') {
+        setError('Network error. Please check your internet connection.');
       } else if (err.message) {
         setError(err.message);
       } else {
-        setError('Login failed. Please check your connection and try again.');
+        setError('Login failed. Please try again later.');
       }
     } finally {
       setIsLoading(false);
