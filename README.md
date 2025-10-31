@@ -440,17 +440,12 @@ VITE_API_BASE_URL=http://localhost:5000/api
 
 ## 👨‍💻 Developer Information
 
-**Name:** ANshdeep singh  
+**Name:** Anshdeep Singh  
 **Email:** anshdeepsingh686@gmail.com  
 **LinkedIn:** https://linkedin.com/in/anshdeep-singh-306336256
 **GitHub:** https://github.com/AnshBajwa13  
 
-### Development Timeline
-- **Day 1-2:** Assignment 1 (Auth + Project Management)
-- **Day 3-4:** Assignment 2 (Task Dependencies + Graph)
-- **Day 5-6:** Assignment 3 (CPM Algorithm + Tests)
-- **Day 7:** Polish, bug fixes, documentation
-
+#
 **Total Development Time:** ~7 days  
 **Final Status:** 100% Complete, Production-Ready
 
