@@ -21,8 +21,8 @@ RUN mkdir -p /app/data
 # Expose port
 EXPOSE 8080
 
-# Set environment variables
-ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+# Set environment variables - Railway will provide $PORT
+ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT:-8080}
 
 # Run the application
 ENTRYPOINT ["dotnet", "API.dll"]
