@@ -1,25 +1,13 @@
 # Use .NET 8 SDK for building
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /build
 
-# Copy solution file and all project files
-COPY ../../*.sln ./
-COPY ../API/*.csproj ./API/
-COPY ../Application/*.csproj ./Application/
-COPY ../Domain/*.csproj ./Domain/
-COPY ../Infrastructure/*.csproj ./Infrastructure/
+# Copy everything from context (Railway root is Assignment2/src)
+COPY . .
 
-# Restore dependencies
+# Restore and build from API project
+WORKDIR /build/API
 RUN dotnet restore
-
-# Copy everything else
-COPY ../API/. ./API/
-COPY ../Application/. ./Application/
-COPY ../Domain/. ./Domain/
-COPY ../Infrastructure/. ./Infrastructure/
-
-# Build and publish
-WORKDIR /src/API
 RUN dotnet publish -c Release -o /app/publish
 
 # Use .NET runtime for running
