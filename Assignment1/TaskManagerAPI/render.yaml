@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: assignment1-task-api
+    env: dotnet
+    buildCommand: dotnet restore && dotnet publish -c Release -o out
+    startCommand: dotnet out/TaskManagerAPI.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:$PORT
