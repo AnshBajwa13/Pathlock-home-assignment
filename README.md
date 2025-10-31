@@ -14,9 +14,11 @@
 - **Backend:** Railway (.NET 8 API)
 - **Frontend:** Vercel (React + TypeScript)
 
-### Assignment 2+3: Full Project Manager (CQRS + Scheduling)
-- **🚀 Live Demo:** Coming soon...
-- **📖 API Docs:** Coming soon...
+### Assignment 2+3: Full Project Manager (CQRS + Scheduling) ✅
+- **🚀 Live Demo:** https://pathlock-project-manager.vercel.app
+- **📖 API Docs:** https://pathlock-home-assignment-production-344b.up.railway.app/
+- **Backend:** Railway (.NET 8 API with Clean Architecture + CQRS)
+- **Frontend:** Vercel (React + TypeScript + Vite)
 
 ---
 
@@ -30,7 +32,8 @@ A comprehensive full-stack project management system built with **.NET 8** (back
 - ✅ **Production-Ready** - Security, validation, and error handling
 - ✅ **Advanced Features** - Interactive dependency graph, decimal precision
 - ✅ **Clean Code** - SOLID principles, proper architecture
-- ✅ **Live Deployment** - Assignment 1 deployed on Railway + Vercel
+- ✅ **Fully Deployed** - Both assignments live on Railway + Vercel
+- ✅ **CORS Configured** - Flexible origin handling for any frontend URL changes
 
 ---
 
@@ -44,29 +47,32 @@ A comprehensive full-stack project management system built with **.NET 8** (back
 - Responsive UI with Tailwind CSS
 - **DEPLOYED:** https://assignment1-task-manager.vercel.app
 
-### Assignment 2+3: Authentication & Project Management ✅
+### Assignment 2: Authentication & Project Management ✅
 - JWT-based authentication (15-min access token, 7-day refresh token)
 - User registration with strong password validation
 - Project CRUD operations (Create, Read, Update, Delete)
 - Task management with completion tracking
 - Responsive UI with Tailwind CSS
 - Auto-refresh token mechanism
+- **DEPLOYED:** https://pathlock-project-manager.vercel.app
 
-### Assignment 2: Task Dependencies ✅
+### Assignment 3: Task Dependencies ✅
 - Many-to-many task relationships
 - Circular dependency detection
 - Self-dependency prevention
 - Database design with junction tables
 - **BONUS:** Interactive dependency graph with Canvas API
 - **BONUS:** Visual task relationships with zoom functionality
+- **DEPLOYED:** https://pathlock-project-manager.vercel.app
 
-### Assignment 3: Project Scheduling Algorithm ✅
+### Assignment 4: Project Scheduling Algorithm ✅
 - Critical Path Method (CPM) implementation
 - Topological sort for task ordering
 - Forward/backward pass calculations
 - Slack time and critical path identification
 - **40/40 unit tests passing** (100% coverage)
 - Schedule visualization UI
+- **DEPLOYED:** https://pathlock-project-manager.vercel.app
 
 ---
 
@@ -474,12 +480,43 @@ VITE_API_BASE_URL=http://localhost:5000/api
 
 ---
 
-## 📞 Support & Contact
+## � Production Deployment
+
+### Assignment 1 (Simple Task Manager)
+- **Frontend:** https://assignment1-task-manager.vercel.app
+- **Backend API:** https://pathlock-home-assignment-production.up.railway.app/index.html
+- **Platform:** Vercel + Railway
+- **Status:** ✅ Live & Running
+
+### Assignment 2+3+4 (Full Project Manager)
+- **Frontend:** https://pathlock-project-manager.vercel.app
+- **Backend API:** https://pathlock-home-assignment-production-344b.up.railway.app/
+- **Platform:** Vercel + Railway
+- **Status:** ✅ Live & Running
+
+### Deployment Features
+- ✅ Automatic CI/CD from GitHub
+- ✅ CORS configured for production
+- ✅ Environment variables secured
+- ✅ Database persistence with SQLite
+- ✅ Swagger UI enabled for API testing
+- ✅ JWT authentication in production
+- ✅ Flexible origin handling for frontend URL changes
+
+### How to Test
+1. Visit frontend URLs above
+2. Register a new account or use test credentials
+3. Create projects and tasks
+4. Add task dependencies and view interactive graph
+5. Generate project schedules with CPM algorithm
+6. All features work end-to-end in production!
+
+---
+
+## �📞 Support & Contact
 
 For questions or issues:
 1. **Email:** anshdeepsingh686@gmail.com
-
-
 
 ---
 
