@@ -1,12 +1,12 @@
 import axios from 'axios';
 import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../types/task';
 
-// API base URL - matches our backend
-const API_BASE_URL = 'http://localhost:5039/api/v1';
+// API base URL - uses environment variable or falls back to localhost
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5039';
 
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api/v1`,
   headers: {
     'Content-Type': 'application/json',
   },
