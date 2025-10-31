@@ -166,50 +166,85 @@ Frontend runs on `http://localhost:5173` (or next available port)               
 ## 📁 Project Structure
 
 **Request/Response Examples:**
+# create POST /api/v1/tasks
+{
+  "description": "Complete PathLock assignment"
+}
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "description": "Complete PathLock assignment",
+  "isCompleted": false,
+  "createdAt": "2025-10-31T08:04:17Z",
+  "completedAt": null
+}
 
 ```
+### Get All Tasks
+**GET** `/api/v1/tasks`
+**Response (200 OK):**
+{
+"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+"description": "Complete PathLock assignment",
+"isCompleted": false,
+"createdAt": "2025-10-31T08:04:17Z",
+"completedAt": null
+## Update Task
+**PUT** `/api/v1/tasks/{id}`
 
-Create Task:TaskManagerAPI/
+**Request:**
+{
+"description": "Updated task description",
+"isCompleted": true
+}
+**Response (200 OK):**
+{
+"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+"description": "Updated task description",
+"isCompleted": true,
+"createdAt": "2025-10-31T08:04:17Z",
+"completedAt": "2025-10-31T08:15:32Z"
+}
+### Delete Task
+**DELETE** `/api/v1/tasks/{id}`
 
-```json├── Controllers/
+**Response (204 No Content)**
+---
 
-POST /api/v1/tasks│   └── TasksController.cs          # Thin REST controllers
-
-{├── Services/
-
-  "description": "Complete PathLock assignment"│   ├── ITaskService.cs              # Service interface
-
-}│   └── TaskService.cs               # Business logic implementation
-
-```├── Repositories/
-
+ ### Project Structure
+TaskManagerAPI/
+├── Controllers/
+│   └── TasksController.cs           # Thin REST controllers (GET, POST, PUT, DELETE)
+│
+├── Services/
+│   ├── ITaskService.cs              # Service interface
+│   └── TaskService.cs               # Business logic implementation
+│
+├── Repositories/
 │   ├── ITaskRepository.cs           # Repository interface
-
-Response:│   └── InMemoryTaskRepository.cs    # In-memory storage (ConcurrentDictionary)
-
-```json├── Models/
-
-{│   ├── Domain/
-
-  "id": "guid-here",│   │   └── TaskItem.cs              # Rich domain model (private setters, behavior methods)
-
-  "description": "Complete PathLock assignment",│   ├── DTOs/
-
-  "isCompleted": false,│   │   └── TaskDtos.cs              # Request/Response models
-
-  "createdAt": "2025-10-30T04:14:17Z",│   └── TaskMappingExtensions.cs     # Domain ↔ DTO mapping
-
-  "completedAt": null├── Validators/
-
-}│   └── TaskValidators.cs            # FluentValidation validators
-
-```├── Middleware/
-
+│   └── InMemoryTaskRepository.cs    # In-memory storage (ConcurrentDictionary)
+│
+├── Models/
+│   ├── Domain/
+│   │   └── TaskItem.cs              # Rich domain model (private setters, behavior)
+│   │
+│   └── DTOs/
+│       ├── CreateTaskRequest.cs     # Request DTOs
+│       ├── UpdateTaskRequest.cs
+│       ├── TaskResponse.cs          # Response DTOs
+│       └── TaskMappingExtensions.cs # Domain ↔ DTO mapping
+│
+├── Validators/
+│   ├── CreateTaskValidator.cs       # FluentValidation validators
+│   └── UpdateTaskValidator.cs
+│
+├── Middleware/
 │   └── ExceptionHandlingMiddleware.cs  # Global error handling
+│
+├── Program.cs                        # App configuration & DI setup
+├── appsettings.json                  # Configuration
+└── TaskManagerAPI.csproj             # Project file
 
-## Project Structure└── Program.cs                        # App configuration & DI setup
 
-```
 
 ### Backend
 
