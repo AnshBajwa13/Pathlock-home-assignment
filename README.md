@@ -10,7 +10,7 @@
 
 ### Assignment 1: Simple Task Manager ✅
 - **🚀 Live Demo:** https://assignment1-task-manager.vercel.app
-- **📖 API Docs:** https://pathlock-home-assignment-production.up.railway.app/swagger
+- **📖 API Docs:** https://pathlock-home-assignment-production.up.railway.app/index.html
 - **Backend:** Railway (.NET 8 API)
 - **Frontend:** Vercel (React + TypeScript)
 
