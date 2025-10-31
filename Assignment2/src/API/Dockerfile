@@ -2,12 +2,21 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /build
 
-# Copy everything from context (Railway root is Assignment2/src)
-COPY . .
+# Copy solution file and all projects
+COPY ProjectManager.sln ./
+COPY src/API/*.csproj ./src/API/
+COPY src/Application/*.csproj ./src/Application/
+COPY src/Domain/*.csproj ./src/Domain/
+COPY src/Infrastructure/*.csproj ./src/Infrastructure/
 
-# Restore and build from API project
-WORKDIR /build/API
-RUN dotnet restore
+# Restore dependencies
+RUN dotnet restore ProjectManager.sln
+
+# Copy all source code
+COPY src/ ./src/
+
+# Build and publish
+WORKDIR /build/src/API
 RUN dotnet publish -c Release -o /app/publish
 
 # Use .NET runtime for running
