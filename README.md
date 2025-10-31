@@ -6,6 +6,20 @@
 
 ---
 
+## 🌐 Live Deployments
+
+### Assignment 1: Simple Task Manager ✅
+- **🚀 Live Demo:** https://assignment1-task-manager.vercel.app
+- **📖 API Docs:** https://pathlock-home-assignment-production.up.railway.app/swagger
+- **Backend:** Railway (.NET 8 API)
+- **Frontend:** Vercel (React + TypeScript)
+
+### Assignment 2+3: Full Project Manager (CQRS + Scheduling)
+- **🚀 Live Demo:** Coming soon...
+- **📖 API Docs:** Coming soon...
+
+---
+
 ## 🎯 Project Overview
 
 A comprehensive full-stack project management system built with **.NET 8** (backend) and **React 18 + TypeScript** (frontend). This application demonstrates advanced software engineering principles including Clean Architecture, CQRS pattern, task dependency management, and Critical Path Method (CPM) scheduling algorithm.
@@ -16,12 +30,21 @@ A comprehensive full-stack project management system built with **.NET 8** (back
 - ✅ **Production-Ready** - Security, validation, and error handling
 - ✅ **Advanced Features** - Interactive dependency graph, decimal precision
 - ✅ **Clean Code** - SOLID principles, proper architecture
+- ✅ **Live Deployment** - Assignment 1 deployed on Railway + Vercel
 
 ---
 
 ## 📋 Assignments Completed
 
-### Assignment 1: Authentication & Project Management ✅
+### Assignment 1: Simple Task Manager ✅
+- In-memory task storage (thread-safe ConcurrentDictionary)
+- RESTful API with proper HTTP verbs and status codes
+- Task CRUD operations (Create, Read, Update, Delete)
+- Task completion tracking
+- Responsive UI with Tailwind CSS
+- **DEPLOYED:** https://assignment1-task-manager.vercel.app
+
+### Assignment 2+3: Authentication & Project Management ✅
 - JWT-based authentication (15-min access token, 7-day refresh token)
 - User registration with strong password validation
 - Project CRUD operations (Create, Read, Update, Delete)
