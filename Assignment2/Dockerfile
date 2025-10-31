@@ -2,18 +2,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /build
 
-# Copy solution and all project files
-COPY ProjectManager.sln ./
-COPY src/API/API.csproj ./src/API/
-COPY src/Application/Application.csproj ./src/Application/
-COPY src/Domain/Domain.csproj ./src/Domain/
-COPY src/Infrastructure/Infrastructure.csproj ./src/Infrastructure/
+# Copy everything
+COPY . .
 
 # Restore dependencies
-RUN dotnet restore
-
-# Copy all source code
-COPY src/ ./src/
+RUN dotnet restore ProjectManager.sln
 
 # Build and publish
 WORKDIR /build/src/API
