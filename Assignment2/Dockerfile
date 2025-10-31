@@ -5,6 +5,11 @@ WORKDIR /build
 # Copy everything
 COPY . .
 
+# Debug: List what we have
+RUN ls -la
+RUN ls -la src/ || echo "src folder not found"
+RUN ls -la src/API/ || echo "src/API folder not found"
+
 # Restore dependencies
 RUN dotnet restore ProjectManager.sln
 
