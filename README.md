@@ -309,46 +309,6 @@ dotnet test --verbosity detailed
 
 ---
 
-## 🎨 UI Screenshots
-
-### Login Page
-- Clean, modern design
-- Email + password authentication
-- Password visibility toggle (single icon - browser duplicate removed)
-- Error handling with user-friendly messages
-
-### Register Page
-- Full name, email, password, confirm password
-- Real-time validation feedback
-- Strong password requirements displayed
-- Password visibility toggles (duplicates removed)
-
-### Dashboard
-- Project listing with search
-- Create new project button
-- Responsive grid layout
-
-### Project Details
-- Task list with checkboxes
-- Dependency names displayed ("Depends on: Task A, Task B")
-- Add task with dependency selection
-- Generate Schedule button
-- View Dependency Graph button
-
-### Dependency Graph (Interactive)
-- Canvas-based visualization
-- Hierarchical topological layout
-- Zoom controls (50% - 200%)
-- Hover tooltips with task info
-- Color coding for completed tasks
-- Smooth curved arrows
-
-### Schedule Modal
-- Timeline with start/end times
-- Critical path highlighted (red/orange)
-- Slack time shown
-- Total project duration
-- Task dependencies visible
 
 ---
 
