@@ -57,19 +57,13 @@ try
         }
     });
 
-    // Add CORS
+    // Add CORS - Allow all origins for deployed app
     builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowFrontend",
             policy =>
             {
-                policy.WithOrigins(
-                          "http://localhost:3000", 
-                          "http://localhost:5173",
-                          "https://pathlock-task-manager.vercel.app",
-                          "https://assignment1-task-manager.vercel.app",
-                          "https://assignment1-task-manager-rdq32w8y2-ansh-bajwas-projects.vercel.app"
-                      )
+                policy.AllowAnyOrigin()
                       .AllowAnyMethod()
                       .AllowAnyHeader();
             });
