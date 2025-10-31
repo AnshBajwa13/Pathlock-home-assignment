@@ -55,18 +55,38 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// Configure CORS
+// Configure CORS - Flexible for any frontend URL changes
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() 
+    ?? new[] { "http://localhost:5173", "http://localhost:3000" };
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins(
-                "http://localhost:5173",
-                "http://localhost:3000", 
-                "https://pathlock-project-manager.vercel.app")
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials();
+        policy.SetIsOriginAllowed(origin =>
+        {
+            // Allow localhost for development
+            if (origin.StartsWith("http://localhost:"))
+                return true;
+            
+            // Allow all Vercel deployments (preview and production)
+            if (origin.EndsWith(".vercel.app"))
+                return true;
+            
+            // Allow configured origins from appsettings or environment
+            if (allowedOrigins.Any(allowed => origin.Equals(allowed, StringComparison.OrdinalIgnoreCase)))
+                return true;
+            
+            // For production flexibility: Allow any HTTPS origin if configured
+            var allowAnyHttps = builder.Configuration.GetValue<bool>("Cors:AllowAnyHttps");
+            if (allowAnyHttps && origin.StartsWith("https://"))
+                return true;
+            
+            return false;
+        })
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
     });
 });
 
@@ -128,9 +148,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseSerilogRequestLogging();
 
-app.UseHttpsRedirection();
-
+// CORS must come before Authentication and Authorization
 app.UseCors("AllowAll");
+
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
