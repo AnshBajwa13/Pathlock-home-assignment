@@ -3,41 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 
 [ApiController]
+[Route("api/[controller]")]
 public class HealthController : ControllerBase
 {
     /// <summary>
-    /// Root endpoint - API health check
+    /// Health check endpoint for monitoring
     /// </summary>
-    [HttpGet("/")]
-    public IActionResult Index()
+    [HttpGet]
+    public IActionResult Get()
     {
         return Ok(new
         {
             service = "Mini Project Manager API",
-            status = "running",
+            status = "healthy",
             version = "1.0.0",
             timestamp = DateTime.UtcNow,
             endpoints = new
             {
-                swagger = "/swagger",
+                documentation = "/",
                 auth = "/api/auth",
                 projects = "/api/projects",
                 tasks = "/api/tasks",
-                scheduling = "/api/scheduling"
+                scheduling = "/api/scheduling",
+                health = "/api/health"
             }
-        });
-    }
-
-    /// <summary>
-    /// Health check endpoint
-    /// </summary>
-    [HttpGet("/health")]
-    public IActionResult Health()
-    {
-        return Ok(new
-        {
-            status = "healthy",
-            timestamp = DateTime.UtcNow
         });
     }
 }
