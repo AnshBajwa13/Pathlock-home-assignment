@@ -90,7 +90,7 @@ bld/
 *.old
 
 # Documentation that's auto-generated
-**/api/
+# **/api/  ← COMMENTED OUT - was excluding src/API folder!
 
 # Ignore all markdown files EXCEPT the main ones
 # (This is commented out - we want to keep all documentation)
